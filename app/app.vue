@@ -63,6 +63,7 @@ onMounted(() => {
 
 <template>
   <div>
+    <a class="skip" href="#conteudo">Pular para o conteúdo</a>
     <svg width="0" height="0" style="position:absolute" aria-hidden="true">
       <defs>
         <symbol id="i-seta" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></symbol>
@@ -89,7 +90,7 @@ onMounted(() => {
       </div>
     </header>
 
-    <main>
+    <main id="conteudo">
       <!-- topo -->
       <section id="inicio" class="hero">
         <div class="wrap hero-grid">
@@ -167,8 +168,8 @@ onMounted(() => {
               <button v-for="(x, i) in modelos" :key="x.time" type="button" role="radio" :aria-checked="m === i" :class="{ on: m === i }" :style="{ '--b': x.base, '--d': x.detalhe }" @click="m = i"><span />{{ x.time }}</button>
             </div>
             <div class="campos">
-              <label>Nome<input v-model="nome" maxlength="12" autocomplete="off" placeholder="SEU NOME" @input="nome = nome.replace(/[^A-Za-zÀ-ÿ .]/g, '')"></label>
-              <label>Número<input v-model="numero" inputmode="numeric" maxlength="2" autocomplete="off"></label>
+              <label>Nome<input v-model="nome" maxlength="12" autocomplete="off" name="nome" placeholder="Ex.: Ronaldo…" @input="nome = nome.replace(/[^A-Za-zÀ-ÿ .]/g, '')"></label>
+              <label>Número<input v-model="numero" name="numero" inputmode="numeric" maxlength="2" autocomplete="off"></label>
             </div>
             <a class="btn btn-laranja" :href="pedir" target="_blank" rel="noopener"><svg><use href="#i-wa" /></svg> Pedir pelo WhatsApp</a>
             <p class="obs">Desenho de demonstração. O orçamento final sai pelo WhatsApp.</p>
