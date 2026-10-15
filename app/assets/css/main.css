@@ -200,3 +200,6 @@ h1 span{ color:var(--laranja); }
 @media (max-width:640px){ .placar-painel{ grid-template-columns:1fr; padding:26px 22px; gap:16px; } .placar-camisa{ width:110px; } .placar-painel .link-seta{ grid-column:auto; } }
 .duvidas{ padding-block:96px; }
 .placar-pin{ width:95%; left:auto; right:-28%; bottom:-38%; opacity:.13; }
+
+/* celular: área de toque mínima de 44px */
+@media (max-width:760px){ .logo, .link-seta{ min-height:44px; display:inline-flex; align-items:center; } }
