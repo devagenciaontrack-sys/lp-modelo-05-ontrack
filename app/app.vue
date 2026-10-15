@@ -14,7 +14,7 @@ const site = {
 const modelos = [
   { time: 'FALCÕES', base: '#141A2B', detalhe: '#1FB5C9', texto: '#FFFFFF', padrao: 'raio', preco: 'R$ 129,90' },
   { time: 'FÊNIX', base: '#C8201E', detalhe: '#14161C', texto: '#FFFFFF', padrao: 'chevron', preco: 'R$ 129,90' },
-  { time: 'TROVÃO', base: '#F4F4F2', detalhe: '#1D4FD8', texto: '#1D4FD8', padrao: 'listras', preco: 'R$ 139,90' },
+  { time: 'TROVÃO', base: '#F4F4F2', detalhe: '#1D4FD8', texto: '#14161C', contorno: '#FFFFFF', padrao: 'listras', preco: 'R$ 139,90' },
   { time: 'TITÃS', base: '#127A3E', detalhe: '#0B3D20', texto: '#FFFFFF', padrao: 'faixa', preco: 'R$ 129,90' },
 ] as const
 const servicos = [
@@ -142,7 +142,7 @@ onMounted(() => {
           </div>
           <div class="col-grid" data-sobe>
             <button v-for="(x, i) in modelos" :key="x.time" type="button" class="col-card" @click="personalizar(i)">
-              <span class="col-img"><Camisa lado="frente" :base="x.base" :detalhe="x.detalhe" :texto="x.texto" :padrao="x.padrao" :time="x.time" numero="10" /></span>
+              <span class="col-img"><Camisa lado="frente" :base="x.base" :detalhe="x.detalhe" :texto="x.texto" :contorno="x.contorno" :padrao="x.padrao" :time="x.time" numero="10" /></span>
               <span class="col-info"><b>{{ x.time }}</b><span>a partir de {{ x.preco }}</span></span>
               <span class="col-cta">Personalizar <svg><use href="#i-seta" /></svg></span>
             </button>
@@ -155,7 +155,7 @@ onMounted(() => {
         <div class="wrap monte-grid">
           <div class="monte-camisa" data-sobe>
             <Pincelada class="pin pin-c" cor="#FF6A13" :forma="2" />
-            <Camisa lado="costas" :base="modelos[m].base" :detalhe="modelos[m].detalhe" :texto="modelos[m].texto" :padrao="modelos[m].padrao" :nome="nomeCostas" :numero="numCostas" />
+            <Camisa lado="costas" :base="modelos[m].base" :detalhe="modelos[m].detalhe" :texto="modelos[m].texto" :contorno="modelos[m].contorno" :padrao="modelos[m].padrao" :nome="nomeCostas" :numero="numCostas" />
           </div>
           <div class="monte-txt" data-sobe>
             <p class="sobretitulo">Monte a sua</p>

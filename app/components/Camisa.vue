@@ -10,7 +10,8 @@ const props = withDefaults(defineProps<{
   nome?: string
   numero?: string
   time?: string
-}>(), { base: '#14161C', detalhe: '#1FB5C9', manga: '', texto: '#FFFFFF', padrao: 'raio', lado: 'frente', nome: 'SEU NOME', numero: '10', time: 'SUA MARCA' })
+  contorno?: string
+}>(), { base: '#14161C', detalhe: '#1FB5C9', manga: '', texto: '#FFFFFF', padrao: 'raio', lado: 'frente', nome: 'SEU NOME', numero: '10', time: 'SUA MARCA', contorno: '' })
 
 const uid = `c${Math.random().toString(36).slice(2, 8)}`
 const corpo = 'M100 20C113 31 187 31 200 20L250 38C263 44 272 52 280 64L300 128 256 146 244 112V326C244 332 240 336 234 336H66C60 336 56 332 56 326V112L44 146 0 128 20 64C28 52 37 44 50 38Z'
@@ -62,12 +63,12 @@ const nomeTam = computed(() => (props.nome.length > 9 ? 150 : undefined))
     <path v-else d="M100 20Q150 42 200 20" fill="none" :stroke="detalhe" stroke-width="9" />
     <!-- textos -->
     <template v-if="lado === 'frente'">
-      <text x="150" y="112" text-anchor="middle" class="cs-time" :fill="texto">{{ time }}</text>
-      <text x="150" y="214" text-anchor="middle" class="cs-num" :fill="texto">{{ numero }}</text>
+      <text x="150" y="112" text-anchor="middle" class="cs-time" :fill="texto" :stroke="contorno || undefined" :stroke-width="contorno ? 6 : undefined" paint-order="stroke" stroke-linejoin="round">{{ time }}</text>
+      <text x="150" y="214" text-anchor="middle" class="cs-num" :fill="texto" :stroke="contorno || undefined" :stroke-width="contorno ? 6 : undefined" paint-order="stroke" stroke-linejoin="round">{{ numero }}</text>
     </template>
     <template v-else>
-      <text x="150" y="104" text-anchor="middle" class="cs-nome" :fill="texto" :textLength="nomeTam" lengthAdjust="spacingAndGlyphs">{{ nome }}</text>
-      <text x="150" y="240" text-anchor="middle" class="cs-num cs-num-g" :fill="texto">{{ numero }}</text>
+      <text x="150" y="104" text-anchor="middle" class="cs-nome" :fill="texto" :stroke="contorno || undefined" :stroke-width="contorno ? 6 : undefined" paint-order="stroke" stroke-linejoin="round" :textLength="nomeTam" lengthAdjust="spacingAndGlyphs">{{ nome }}</text>
+      <text x="150" y="240" text-anchor="middle" class="cs-num cs-num-g" :fill="texto" :stroke="contorno || undefined" :stroke-width="contorno ? 6 : undefined" paint-order="stroke" stroke-linejoin="round">{{ numero }}</text>
     </template>
   </svg>
 </template>
