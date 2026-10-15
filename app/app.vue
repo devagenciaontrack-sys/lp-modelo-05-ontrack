@@ -2,70 +2,55 @@
 // ============ PERSONALIZAÇÃO ============
 const site = {
   marca: 'Sua Marca',
-  camisa: 'Manto 26', // nome da camisa, vira o título gigante do topo
-  temporada: '2026',
-  preco: 'R$ 189,90',
+  slogan: 'Camisas de time',
   whatsapp: '5500000000000',
   instagram: '#',
   email: 'contato@suamarca.com.br',
   cidade: 'Sua cidade, UF',
-  desde: '2019',
   cnpj: '00.000.000/0000-00',
+  videoId: '', // ID do vídeo do YouTube da seção "Sobre nós" (vazio = só a capa)
 }
-// versões da camisa (cores do desenho de demonstração; troque pelas fotos reais quando tiver)
-const versoes = [
-  { id: 'Casa', corpo: '#0F7D45', letra: '#EBE5E3', gola: '#2B2622' },
-  { id: 'Fora', corpo: '#F4F0EE', letra: '#2B2622', gola: '#0F7D45' },
-  { id: 'Goleiro', corpo: '#2B2622', letra: '#EBE5E3', gola: '#0F7D45' },
+// modelos da coleção (cores do desenho de demonstração; troque pelas fotos reais quando tiver)
+const modelos = [
+  { time: 'FALCÕES', base: '#141A2B', detalhe: '#1FB5C9', texto: '#FFFFFF', padrao: 'raio', preco: 'R$ 129,90' },
+  { time: 'FÊNIX', base: '#C8201E', detalhe: '#14161C', texto: '#FFFFFF', padrao: 'chevron', preco: 'R$ 129,90' },
+  { time: 'TROVÃO', base: '#F4F4F2', detalhe: '#1D4FD8', texto: '#1D4FD8', padrao: 'listras', preco: 'R$ 139,90' },
+  { time: 'TITÃS', base: '#127A3E', detalhe: '#0B3D20', texto: '#FFFFFF', padrao: 'faixa', preco: 'R$ 129,90' },
+] as const
+const servicos = [
+  { t: 'Design exclusivo', d: 'Mande a ideia, o escudo e as cores. A gente desenha e você aprova antes de produzir.', i: 'pincel' },
+  { t: 'Uniforme completo', d: 'Camisa, calção e meião no mesmo padrão, para futebol, futsal e society.', i: 'camisa' },
+  { t: 'Pedidos em quantidade', d: 'O preço por peça cai conforme a quantidade. A partir de 10 camisas.', i: 'caixa' },
+  { t: 'Envio para todo o Brasil', d: 'Produção em até 15 dias úteis e entrega com código de rastreio.', i: 'caminhao' },
 ]
-const detalhes = [
-  { g: 'Tecido', itens: [
-    ['Poliéster 140 g/m²', 'Leve o bastante para o jogo, encorpado o bastante para durar.'],
-    ['Trama com microfuros', 'O ar passa e o suor sai pelas costas e pelas laterais.'],
-    ['Seca em minutos', 'Lavou de manhã, veste no jogo da tarde.'],
-    ['Proteção UV 50+', 'Para o jogo de domingo ao meio-dia.'],
-    ['Cor que não desbota', 'Sublimação: a cor faz parte do fio, não sai na máquina.'],
-    ['Toque frio', 'Acabamento que não gruda no corpo.'],
-  ] },
-  { g: 'Acabamento', itens: [
-    ['Escudo bordado', 'Bordado em alto-relevo, não é adesivo.'],
-    ['Gola V com ribana', 'Ribana dupla que não abre com o tempo.'],
-    ['Nome e número em silk', 'Tinta de alta densidade que não racha na lavagem.'],
-    ['Etiqueta termocolada', 'Nada de etiqueta pinicando a nuca.'],
-    ['Punho com elástico', 'A manga fica no lugar quando você levanta o braço.'],
-    ['Costura reforçada', 'Costura dupla nas laterais e nos ombros.'],
-  ] },
-  { g: 'Caimento', itens: [
-    ['Modelagem torcedor', 'Corte reto, confortável para o dia a dia.'],
-    ['Versão jogador', 'Mais justa no corpo, como a dos atletas.'],
-    ['Do P ao XGG', 'Tabela de medidas completa logo abaixo.'],
-    ['Baby look do P ao GG', 'Modelagem feminina, mesma camisa.'],
-    ['Infantil de 4 a 16', 'Para o torcedor que está chegando.'],
-    ['Troca em 30 dias', 'Não serviu? A troca é por nossa conta.'],
-  ] },
-]
-const temporadas = [['Manto 26', '2026'], ['Manto 25', '2025'], ['Manto 24', '2024'], ['Manto 23', '2023'], ['Manto 22', '2022'], ['Manto 21', '2021']]
-const etapas = [['Modelagem', 'equipe própria'], ['Sublimação', 'parceiro local'], ['Bordado', 'ateliê parceiro'], ['Costura', 'confecção parceira'], ['Personalização', 'equipe própria'], ['Envio', 'Correios e transportadora']]
+const numeros = [{ v: '500+', l: 'times atendidos' }, { v: '10 mil+', l: 'camisas entregues' }, { v: '4,9', l: 'nota dos clientes', estrela: true }]
 const avaliacoes = [
-  { t: 'Chegou em quatro dias, com o nome do meu filho certinho.', n: 'Paula R.', c: 'Goiânia, GO' },
-  { t: 'Tecido leve de verdade. Joguei a pelada inteira com ela.', n: 'Diego S.', c: 'Porto Alegre, RS' },
-  { t: 'Pedi a de goleiro com o meu apelido. Ficou exatamente como eu queria.', n: 'Tiago M.', c: 'Belém, PA' },
+  { t: 'Fizemos o uniforme do time da firma. Chegou antes do prazo e a qualidade surpreendeu todo mundo.', n: 'Marcos A.', c: 'Unidos FC · Campinas, SP' },
+  { t: 'O desenho ficou do jeito que a gente imaginou. Atendimento rápido pelo WhatsApp.', n: 'Juliana P.', c: 'Futsal feminino · Recife, PE' },
+  { t: 'Terceiro ano pedindo com eles. Tecido leve e o número não descasca.', n: 'Rodrigo L.', c: 'Society dos Amigos · Curitiba, PR' },
 ]
-const medidas = [['P', '50', '70'], ['M', '53', '72'], ['G', '56', '74'], ['GG', '59', '76'], ['XGG', '62', '78']]
+const faq = [
+  { q: 'Qual é o pedido mínimo?', a: 'Para time, a partir de 10 camisas. Camisa avulsa personalizada também pode, com o mesmo cuidado.' },
+  { q: 'Quanto tempo demora?', a: 'Depois que você aprova o desenho, produzimos em até 15 dias úteis. O frete aparece no orçamento, de acordo com o CEP.' },
+  { q: 'Posso colocar o escudo do meu time?', a: 'Pode. Mande o escudo em boa resolução e a gente aplica em sublimação ou bordado.' },
+  { q: 'Como escolho os tamanhos?', a: 'Mandamos a tabela de medidas e, se precisar, um kit de prova de tamanhos para o time.' },
+]
 
-// ============ CAMISA AO VIVO ============
-const v = ref(0)
+// ============ MONTE A SUA (ao vivo) ============
+const m = ref(0)
 const nome = ref('')
 const numero = ref('10')
-const nomeCostas = computed(() => (nome.value.trim() || 'Seu nome').toUpperCase().slice(0, 12))
-const numCostas = computed(() => (numero.value.replace(/\D/g, '').slice(0, 2) || '10'))
-const pedir = computed(() => `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Olá! Quero o ${site.camisa} (${versoes[v.value].id}) com o nome ${nomeCostas.value} e o número ${numCostas.value}.`)}`)
-const wa = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Olá! Quero saber mais sobre o ${site.camisa}.`)}`
+const nomeCostas = computed(() => (nome.value.trim() || 'SEU NOME').toUpperCase().slice(0, 12))
+const numCostas = computed(() => numero.value.replace(/\D/g, '').slice(0, 2) || '10')
+const pedir = computed(() => `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Olá! Quero orçamento da camisa ${modelos[m.value].time} com o nome ${nomeCostas.value} e o número ${numCostas.value}.`)}`)
+const wa = (t = 'Olá! Quero fazer o orçamento das camisas do meu time.') => `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(t)}`
 const base = useRuntimeConfig().app.baseURL
-const hover = ref<string | null>(null)
-const dica = computed(() => hover.value ? detalhes.flatMap(d => d.itens).find(i => i[0] === hover.value)?.[1] : 'Passe o mouse em um item para ver o detalhe.')
+const tocando = ref(false)
+function personalizar(i: number) {
+  m.value = i
+  document.getElementById('monte')?.scrollIntoView({ behavior: 'smooth' })
+}
 
-// entradas das seções (sem JS, tudo aparece normalmente)
 onMounted(() => {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return
   document.documentElement.classList.add('anima')
@@ -76,159 +61,208 @@ onMounted(() => {
 
 <template>
   <div>
-    <header class="hero">
-      <div class="hero-foto">
-        <img :src="`${base}fotos/arquibancada.webp`" width="1800" height="1350" alt="Arquibancadas e gramado de um estádio de futebol vazio" fetchpriority="high">
-        <nav class="topo" aria-label="Seções">
-          <a href="#" class="marca">{{ site.marca }}</a>
-          <span class="links"><a href="#personalize">Personalize</a><a href="#detalhes">Detalhes</a><a href="#sobre">Sobre nós</a><a href="#avaliacoes">Avaliações</a></span>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <symbol id="i-seta" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></symbol>
+        <symbol id="i-escudo" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.5 3 8.3 7 10 4-1.7 7-5.5 7-10V6Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" /></symbol>
+        <symbol id="i-raio" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" /></symbol>
+        <symbol id="i-pincel" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4.5 19.5 9.5 11 18l-5-5Z" /><path d="M6 13c-2 0-3 1.5-3 3.5S2 20 2 20s3.5 0 5-1 1.5-2.5 1-4" /></g></symbol>
+        <symbol id="i-camisa" viewBox="0 0 24 24"><path d="M8 3 3 6l2 4 2-1v12h10V9l2 1 2-4-5-3c-.5 1.5-2 2.5-4 2.5S8.5 4.5 8 3Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" /></symbol>
+        <symbol id="i-caixa" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9Z" /><path d="m4 7.5 8 4.5 8-4.5M12 12v9" /></g></symbol>
+        <symbol id="i-caminhao" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h11v10H2zM13 9h4l4 4v3h-8" /><circle cx="6" cy="17.5" r="1.8" /><circle cx="17" cy="17.5" r="1.8" /></g></symbol>
+        <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7Z" fill="currentColor" /></symbol>
+        <symbol id="i-estrela" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9Z" fill="currentColor" /></symbol>
+        <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.2a9.7 9.7 0 0 0-8.3 14.7L2.3 21.8l5-1.3A9.7 9.7 0 1 0 12 2.2Zm0 17.7a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 19.9Zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8c1.6.7 2.2.7 3 .6.5-.1 1.4-.6 1.6-1.2.2-.6.2-1.1.1-1.2l-.5-.4Z" /></symbol>
+        <symbol id="i-ig" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="3.5" y="3.5" width="17" height="17" rx="5" /><circle cx="12" cy="12" r="4" /></g><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" /></symbol>
+      </defs>
+    </svg>
+
+    <header class="topo">
+      <div class="wrap topo-in">
+        <a href="#" class="logo"><b>{{ site.marca }}</b><small>{{ site.slogan }}</small></a>
+        <nav class="nav" aria-label="Seções">
+          <a href="#inicio" class="ativo">Início</a><a href="#colecao">Modelos</a><a href="#monte">Monte a sua</a><a href="#sobre">Sobre nós</a><a href="#avaliacoes">Avaliações</a>
         </nav>
-      </div>
-      <div class="hero-faixa">
-        <h1 class="monumento">{{ site.camisa }}</h1>
-        <div class="hero-linha">
-          <p>A camisa da temporada {{ site.temporada }}, com o seu nome e o seu número nas costas. A partir de {{ site.preco }}, personalização inclusa.</p>
-          <a class="botao" href="#personalize">Montar a minha</a>
-        </div>
+        <a class="btn btn-laranja btn-p" href="#monte">Monte a sua</a>
       </div>
     </header>
 
     <main>
-      <!-- camisa ao vivo -->
-      <section id="personalize" class="vitrine">
-        <div class="placa" data-sobe>
-          <svg class="camisa" viewBox="0 0 300 330" role="img" :aria-label="`Costas da camisa ${versoes[v].id} com o nome ${nomeCostas} e o número ${numCostas}`">
-            <path :fill="versoes[v].corpo" d="M92 18Q150 36 208 18L262 42 298 110 254 134 240 110V322H60V110L46 134 2 110 38 42Z" />
-            <path :stroke="versoes[v].gola" fill="none" stroke-width="7" d="M92 18Q150 36 208 18" />
-            <path :stroke="versoes[v].gola" fill="none" stroke-width="5" d="M254 134 298 110M46 134 2 110" />
-            <text x="150" y="96" text-anchor="middle" class="costas-nome" :fill="versoes[v].letra" :textLength="nomeCostas.length > 8 ? 150 : undefined" lengthAdjust="spacingAndGlyphs">{{ nomeCostas }}</text>
-            <text x="150" y="232" text-anchor="middle" class="costas-num" :fill="versoes[v].letra">{{ numCostas }}</text>
-          </svg>
-          <p class="placa-nota">Desenho de demonstração: troque pela foto da camisa.</p>
-        </div>
-        <div class="vitrine-txt" data-sobe>
-          <div class="abas" role="tablist" aria-label="Versão da camisa">
-            <button v-for="(x, i) in versoes" :key="x.id" type="button" role="tab" :aria-selected="v === i" :class="{ on: v === i }" @click="v = i">{{ x.id }}</button>
-          </div>
-          <div>
-            <h2>Seu nome nas costas</h2>
-            <p class="vitrine-desc">Escreva o nome e escolha o número. É assim que a camisa chega na sua casa, estampada em silk de alta densidade.</p>
-            <div class="campos">
-              <label>Nome <input v-model="nome" maxlength="12" autocomplete="off" placeholder="Seu nome" @input="nome = nome.replace(/[^A-Za-zÀ-ÿ .]/g, '')"></label>
-              <label>Número <input v-model="numero" inputmode="numeric" maxlength="2" autocomplete="off"></label>
+      <!-- topo -->
+      <section id="inicio" class="hero">
+        <div class="wrap hero-grid">
+          <div class="hero-txt">
+            <p class="sobretitulo">Camisas personalizadas</p>
+            <h1>Seu time.<br><span>Seu estilo.</span><br>Nossa camisa.</h1>
+            <p class="hero-desc">Criamos camisas de time sob medida, com o escudo, as cores, o nome e o número de cada jogador. Para a escola, a firma, a pelada de domingo ou o campeonato.</p>
+            <div class="hero-acoes">
+              <a class="btn btn-laranja" href="#monte">Monte a sua camisa <svg><use href="#i-seta" /></svg></a>
+              <a class="btn btn-contorno" href="#colecao">Ver modelos</a>
             </div>
-          </div>
-          <div class="acoes">
-            <a class="acao acao-tinta" :href="pedir" target="_blank" rel="noopener">Pedir com este nome</a>
-            <a class="acao acao-tom" href="#duvidas">Ver tamanhos</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- detalhes -->
-      <section id="detalhes" class="detalhes">
-        <h2 data-sobe>Feita para jogo</h2>
-        <div class="det-grade" data-sobe>
-          <div v-for="d in detalhes" :key="d.g" class="det-col">
-            <h3>{{ d.g }}</h3>
-            <ul>
-              <li v-for="[t] in d.itens" :key="t" :class="{ on: hover === t }" tabindex="0" @mouseenter="hover = t" @focus="hover = t" @mouseleave="hover = null" @blur="hover = null">{{ t }}</li>
+            <ul class="selos">
+              <li><svg><use href="#i-escudo" /></svg>Tecido<br>premium</li>
+              <li><svg><use href="#i-raio" /></svg>Produção<br>rápida</li>
+              <li><svg><use href="#i-pincel" /></svg>Personalização<br>completa</li>
             </ul>
-            <p class="det-resumo">{{ d.itens[0][1] }}</p>
           </div>
-          <p class="det-dica" aria-live="polite">{{ dica }}</p>
+          <div class="hero-camisas" aria-label="Três camisas de exemplo">
+            <Pincelada class="pin pin-a" cor="#FF6A13" :forma="1" />
+            <Pincelada class="pin pin-b" cor="#1FB5C9" :forma="3" />
+            <div class="hc hc-1"><Camisa lado="costas" base="#FF6A13" detalhe="#14161C" texto="#14161C" padrao="liso" nome="SEU NOME" numero="10" /></div>
+            <div class="hc hc-3"><Camisa lado="costas" base="#F4F4F2" detalhe="#1FB5C9" manga="#1FB5C9" texto="#14161C" padrao="liso" nome="SEU NOME" numero="10" /></div>
+            <div class="hc hc-2"><Camisa lado="frente" base="#14161C" detalhe="#1FB5C9" texto="#FFFFFF" padrao="raio" :time="site.marca.toUpperCase()" numero="10" /></div>
+          </div>
         </div>
       </section>
 
-      <div class="faixa-fotos" data-sobe>
-        <img :src="`${base}fotos/bola.webp`" width="1400" height="934" alt="Bola de futebol parada sobre a grama" loading="lazy">
-        <img :src="`${base}fotos/rede.webp`" width="1400" height="934" alt="Rede de um gol de futebol vista de perto" loading="lazy">
-      </div>
+      <!-- serviços -->
+      <section class="servicos claro">
+        <div class="wrap serv-grid">
+          <div class="serv-txt" data-sobe>
+            <p class="sobretitulo">O que a gente faz</p>
+            <h2>Tudo que o seu time precisa</h2>
+            <p>Do desenho à entrega, cuidamos de cada etapa para o uniforme sair do jeito que o time sonhou: bonito, resistente e com a cara de vocês.</p>
+            <a class="btn btn-escuro" :href="wa()" target="_blank" rel="noopener">Pedir orçamento <svg><use href="#i-seta" /></svg></a>
+          </div>
+          <div class="serv-cards" data-sobe>
+            <article v-for="s in servicos" :key="s.t" class="serv-card">
+              <span class="serv-ic"><svg><use :href="`#i-${s.i}`" /></svg></span>
+              <div><h3>{{ s.t }}</h3><p>{{ s.d }}</p></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- coleção -->
+      <section id="colecao" class="colecao">
+        <div class="wrap">
+          <div class="sec-head" data-sobe>
+            <div><p class="sobretitulo">Coleção</p><h2>Modelos mais pedidos</h2></div>
+            <a class="link-seta" href="#monte">Personalizar um modelo <svg><use href="#i-seta" /></svg></a>
+          </div>
+          <div class="col-grid" data-sobe>
+            <button v-for="(x, i) in modelos" :key="x.time" type="button" class="col-card" @click="personalizar(i)">
+              <span class="col-img"><Camisa lado="frente" :base="x.base" :detalhe="x.detalhe" :texto="x.texto" :padrao="x.padrao" :time="x.time" numero="10" /></span>
+              <span class="col-info"><b>{{ x.time }}</b><span>a partir de {{ x.preco }}</span></span>
+              <span class="col-cta">Personalizar <svg><use href="#i-seta" /></svg></span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- monte a sua -->
+      <section id="monte" class="monte">
+        <div class="wrap monte-grid">
+          <div class="monte-camisa" data-sobe>
+            <Pincelada class="pin pin-c" cor="#FF6A13" :forma="2" />
+            <Camisa lado="costas" :base="modelos[m].base" :detalhe="modelos[m].detalhe" :texto="modelos[m].texto" :padrao="modelos[m].padrao" :nome="nomeCostas" :numero="numCostas" />
+          </div>
+          <div class="monte-txt" data-sobe>
+            <p class="sobretitulo">Monte a sua</p>
+            <h2>Seu nome nas costas</h2>
+            <p>Escolha o modelo, escreva o nome e o número. A prévia muda na hora.</p>
+            <div class="modelos-mini" role="radiogroup" aria-label="Modelo">
+              <button v-for="(x, i) in modelos" :key="x.time" type="button" role="radio" :aria-checked="m === i" :class="{ on: m === i }" :style="{ '--b': x.base, '--d': x.detalhe }" @click="m = i"><span />{{ x.time }}</button>
+            </div>
+            <div class="campos">
+              <label>Nome<input v-model="nome" maxlength="12" autocomplete="off" placeholder="SEU NOME" @input="nome = nome.replace(/[^A-Za-zÀ-ÿ .]/g, '')"></label>
+              <label>Número<input v-model="numero" inputmode="numeric" maxlength="2" autocomplete="off"></label>
+            </div>
+            <a class="btn btn-laranja" :href="pedir" target="_blank" rel="noopener"><svg><use href="#i-wa" /></svg> Pedir pelo WhatsApp</a>
+            <p class="obs">Desenho de demonstração. O orçamento final sai pelo WhatsApp.</p>
+          </div>
+        </div>
+      </section>
 
       <!-- sobre nós -->
-      <!-- TODO: trocar pela história real da marca -->
-      <section id="sobre" class="sobre">
-        <h2 class="oculto">Sobre nós</h2>
-        <div class="sobre-linha" data-sobe>
-          <dl class="fatos">
-            <div><dt>Desde</dt><dd>{{ site.desde }}</dd></div>
-            <div><dt>De</dt><dd>{{ site.cidade }}</dd></div>
-            <div><dt>Por temporada</dt><dd>Uma camisa só</dd></div>
-          </dl>
-          <p class="sobre-txt">A {{ site.marca }} nasceu na arquibancada. A gente cansou de camisa que desbota na terceira lavagem e de nome que descola no primeiro jogo. Por isso fazemos uma camisa por temporada, em lotes pequenos, e personalizamos uma a uma, com o nome que você escolher.</p>
-        </div>
-        <div class="sobre-linha sobre-reg" data-sobe>
-          <p class="reg-tit">Temporadas e quem faz</p>
-          <ul class="reg"><li v-for="[a, b] in temporadas" :key="a"><span>{{ a }}</span><span>{{ b }}</span></li></ul>
-          <ul class="reg"><li v-for="[a, b] in etapas" :key="a"><span>{{ a }}</span><span>{{ b }}</span></li></ul>
-        </div>
-        <img class="sobre-foto" :src="`${base}fotos/estadio.webp`" width="2200" height="1467" alt="Vista aérea de um grande estádio de futebol no meio da cidade" loading="lazy" data-sobe>
-      </section>
-
-      <!-- avaliações -->
-      <section id="avaliacoes" class="avaliacoes">
-        <h2 class="oculto">Avaliações</h2>
-        <blockquote class="citacao" data-sobe>
-          <p><span>“Lavei</span><span>trinta</span><span>vezes</span></p>
-          <p><span>e o</span><span>nome</span><span>continua lá.”</span></p>
-          <footer><span>Rafael M.</span><span>torcedor</span><span>Recife, PE</span></footer>
-        </blockquote>
-        <div class="mais" data-sobe>
-          <p class="nota-geral"><b>4,9</b> de 5, em 000 avaliações</p>
-          <figure v-for="a in avaliacoes" :key="a.n"><blockquote>{{ a.t }}</blockquote><figcaption>{{ a.n }} · {{ a.c }}</figcaption></figure>
-        </div>
-        <p class="aviso">Avaliações de exemplo: substitua por avaliações reais e autorizadas.</p>
-      </section>
-
-      <img class="gramado" :src="`${base}fotos/gramado.webp`" width="2000" height="1334" alt="Bola de futebol sozinha no meio de um gramado" loading="lazy" data-sobe>
-
-      <!-- dúvidas -->
-      <section id="duvidas" class="duvidas">
-        <div class="par"><h2 class="duv-tit">Dúvidas</h2><span /></div>
-        <div class="par" data-sobe>
-          <h3>Como escolho o tamanho?</h3>
-          <div>
-            <p>Meça uma camiseta que veste bem em você, deitada numa superfície plana, e compare com a tabela.</p>
-            <table>
-              <thead><tr><th>Tam.</th><th>Largura</th><th>Comprimento</th></tr></thead>
-              <tbody><tr v-for="m in medidas" :key="m[0]"><td>{{ m[0] }}</td><td>{{ m[1] }} cm</td><td>{{ m[2] }} cm</td></tr></tbody>
-            </table>
+      <!-- TODO: trocar pela história real da marca e pelo vídeo -->
+      <section id="sobre" class="sobre claro">
+        <div class="wrap sobre-grid">
+          <div class="sobre-video" data-sobe>
+            <iframe v-if="tocando && site.videoId" :src="`https://www.youtube-nocookie.com/embed/${site.videoId}?autoplay=1&rel=0`" title="Vídeo sobre a marca" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen />
+            <button v-else type="button" class="video-capa" aria-label="Assistir ao vídeo sobre a marca" @click="tocando = true">
+              <img :src="`${base}fotos/arquibancada.webp`" width="1400" height="1050" alt="" loading="lazy">
+              <span class="video-camisa"><Camisa lado="costas" base="#14161C" detalhe="#FF6A13" texto="#FFFFFF" padrao="liso" nome="JUNTOS" numero="26" /></span>
+              <span class="play"><svg><use href="#i-play" /></svg></span>
+            </button>
+          </div>
+          <div class="sobre-txt" data-sobe>
+            <p class="sobretitulo">Sobre nós</p>
+            <h2>Mais que camisas: a identidade do seu time</h2>
+            <p>A {{ site.marca }} nasceu de um time de várzea que nunca achava uniforme bonito e barato ao mesmo tempo. Hoje desenhamos e produzimos camisas para times de todo o Brasil, com o mesmo cuidado do primeiro pedido.</p>
+            <p>Cada camisa passa por quatro mãos: quem desenha, quem estampa, quem costura e quem confere antes de embalar.</p>
+            <ul class="sobre-lista"><li>Produção própria em {{ site.cidade }}</li><li>Sublimação total: a cor não sai</li><li>Atendimento direto pelo WhatsApp</li></ul>
           </div>
         </div>
-        <div class="par" data-sobe><h3>Posso usar qualquer nome?</h3><p>Até 12 letras e um número de 0 a 99. Apelido, sobrenome ou o nome do seu filho, você escolhe.</p></div>
-        <div class="par" data-sobe><h3>Em quanto tempo chega?</h3><p>Personalizamos em até 3 dias úteis. O prazo de entrega aparece no pedido, de acordo com o seu CEP.</p></div>
-        <div class="par" data-sobe><h3>E se não servir?</h3><p>Você tem 30 dias para trocar, com o frete por nossa conta. Camisas personalizadas trocam pelo mesmo nome e número.</p></div>
-        <div class="par" data-sobe><h3>Como lavar?</h3><p>Do avesso, em água fria, sem alvejante. Não passe ferro em cima do nome e do número.</p></div>
       </section>
 
-      <!-- fechamento -->
-      <section class="fecho">
-        <p class="fecho-tit" data-sobe>Seu nome,<br>nosso manto.</p>
-        <div class="fecho-linha">
-          <p>Monte a sua em um minuto e finalize pelo WhatsApp.</p>
-          <a class="botao botao-verde" href="#personalize">Montar a minha</a>
+      <!-- confiança + avaliações -->
+      <section id="avaliacoes" class="confianca claro">
+        <div class="wrap conf-grid">
+          <div class="conf-txt" data-sobe>
+            <h2>Aprovado pelos times. Amado pelos jogadores.</h2>
+            <p>Da escolinha ao campeonato amador, quem veste uma vez volta para a próxima temporada.</p>
+            <dl class="numeros">
+              <div v-for="n in numeros" :key="n.l"><dt>{{ n.v }}<svg v-if="n.estrela"><use href="#i-estrela" /></svg></dt><dd>{{ n.l }}</dd></div>
+            </dl>
+          </div>
+          <div class="conf-fotos" data-sobe>
+            <img :src="`${base}fotos/bola.webp`" width="900" height="600" alt="Bola de futebol na grama" loading="lazy">
+            <img :src="`${base}fotos/rede.webp`" width="900" height="600" alt="Rede do gol vista de perto" loading="lazy">
+            <img :src="`${base}fotos/gramado.webp`" width="1400" height="934" alt="Bola no meio do gramado" loading="lazy">
+          </div>
+        </div>
+        <div class="wrap dep-grid" data-sobe>
+          <figure v-for="a in avaliacoes" :key="a.n" class="dep">
+            <span class="dep-estrelas" aria-label="5 de 5 estrelas"><svg v-for="k in 5" :key="k"><use href="#i-estrela" /></svg></span>
+            <blockquote>“{{ a.t }}”</blockquote>
+            <figcaption><b>{{ a.n }}</b><span>{{ a.c }}</span></figcaption>
+          </figure>
+        </div>
+        <p class="wrap aviso">Números e avaliações de exemplo: substitua pelos dados reais e autorizados.</p>
+      </section>
+
+      <!-- dúvidas -->
+      <section class="duvidas claro">
+        <div class="wrap duv-grid">
+          <h2 data-sobe>Dúvidas frequentes</h2>
+          <div class="duv-lista" data-sobe>
+            <details v-for="(f, i) in faq" :key="f.q" :open="i === 0"><summary>{{ f.q }}</summary><p>{{ f.a }}</p></details>
+          </div>
+        </div>
+      </section>
+
+      <!-- chamada final -->
+      <section class="chamada">
+        <div class="wrap cha-grid">
+          <div data-sobe>
+            <h2>Pronto para criar a camisa do seu time?</h2>
+            <p>Mande a ideia pelo WhatsApp e receba o desenho e o orçamento sem compromisso.</p>
+            <a class="btn btn-laranja" :href="wa()" target="_blank" rel="noopener"><svg><use href="#i-wa" /></svg> Começar agora</a>
+          </div>
+          <div class="cha-camisa" data-sobe><Pincelada class="pin pin-d" cor="#1FB5C9" :forma="1" /><Pincelada class="pin pin-e" cor="#FF6A13" :forma="3" /><Camisa lado="frente" base="#14161C" detalhe="#FF6A13" texto="#FFFFFF" padrao="raio" :time="site.marca.toUpperCase()" numero="10" /></div>
         </div>
       </section>
     </main>
 
     <footer class="rodape">
-      <p class="rod-nome" aria-hidden="true">{{ site.marca }}</p>
-      <div class="rod-linha">
-        <ul class="rod-contatos">
-          <li><a :href="wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2a9.7 9.7 0 0 0-8.3 14.7L2.3 21.8l5-1.3A9.7 9.7 0 1 0 12 2.2Zm0 17.7a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 19.9Zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8c1.6.7 2.2.7 3 .6.5-.1 1.4-.6 1.6-1.2.2-.6.2-1.1.1-1.2l-.5-.4Z" /></svg>WhatsApp</a></li>
-          <li><a :href="site.instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="3.5" y="3.5" width="17" height="17" rx="5" /><circle cx="12" cy="12" r="4" /></g><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" /></svg>Instagram</a></li>
-          <li><a :href="`mailto:${site.email}`">{{ site.email }}</a></li>
-        </ul>
-        <div class="rod-links">
-          <p><a href="#personalize">Personalize</a><a href="#detalhes">Detalhes</a><a href="#sobre">Sobre nós</a></p>
-          <p><a href="#avaliacoes">Avaliações</a><a href="#duvidas">Dúvidas</a></p>
-          <p>{{ site.marca }}<br>CNPJ {{ site.cnpj }}<br>{{ site.cidade }}</p>
+      <div class="wrap rod-grid">
+        <div class="rod-marca">
+          <a href="#" class="logo"><b>{{ site.marca }}</b><small>{{ site.slogan }}</small></a>
+          <p>Camisas personalizadas para times de todo o Brasil.</p>
+          <div class="rod-redes">
+            <a :href="wa()" target="_blank" rel="noopener" aria-label="WhatsApp"><svg><use href="#i-wa" /></svg></a>
+            <a :href="site.instagram" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-ig" /></svg></a>
+          </div>
         </div>
+        <div><h3>Navegação</h3><a href="#inicio">Início</a><a href="#colecao">Modelos</a><a href="#monte">Monte a sua</a><a href="#sobre">Sobre nós</a></div>
+        <div><h3>Atendimento</h3><a :href="wa()" target="_blank" rel="noopener">WhatsApp</a><a :href="site.instagram" target="_blank" rel="noopener">Instagram</a><a :href="`mailto:${site.email}`">{{ site.email }}</a></div>
+        <div><h3>Empresa</h3><p>{{ site.marca }}<br>CNPJ {{ site.cnpj }}<br>{{ site.cidade }}</p></div>
       </div>
-      <p class="creditos">Fotos de ambientação, não são fotos do produto: <a href="https://commons.wikimedia.org/w/index.php?curid=64140933" target="_blank" rel="noopener">“Architectural Detail - Maracana Stadium”</a> de Adam Jones, CC BY-SA 2.0, convertida para preto e branco; <a href="https://commons.wikimedia.org/w/index.php?curid=27256002" target="_blank" rel="noopener">“Maracana Stadium June 2013”</a>, Governo Federal do Brasil, CC BY 3.0; bola, rede e gramado via rawpixel, CC0.</p>
-      <div class="rod-final">
-        <span>© {{ new Date().getFullYear() }} {{ site.marca }} · <a class="rod-credito" href="https://www.ontrackagenciadigital.com.br/" target="_blank" rel="noopener">Desenvolvido por <b>OnTrack Agência Digital</b></a></span>
-        <a href="#">Voltar ao topo</a>
+      <div class="wrap rod-final">
+        <span>© {{ new Date().getFullYear() }} {{ site.marca }}. Todos os direitos reservados.</span>
+        <span class="creditos">Fotos de ambientação: Adam Jones (CC BY-SA 2.0, via Wikimedia Commons) e rawpixel (CC0).</span>
+        <a class="rod-credito" href="https://www.ontrackagenciadigital.com.br/" target="_blank" rel="noopener">Desenvolvido por <b>OnTrack Agência Digital</b></a>
       </div>
     </footer>
   </div>

@@ -1,4 +1,4 @@
-# Modelo 05 — Camisa de futebol · produto único · On Track LP
+# Modelo 05 — Camisas de time personalizadas · On Track LP
 
 Landing page modelo da **On Track**, feita em **Nuxt 4** (Vue). Sem marca: pronta para personalizar e vender.
 
