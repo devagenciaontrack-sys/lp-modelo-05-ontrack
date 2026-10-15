@@ -1,4 +1,4 @@
-# Modelo 05 — Moda · produto único · On Track LP
+# Modelo 05 — Camisa de futebol · produto único · On Track LP
 
 Landing page modelo da **On Track**, feita em **Nuxt 4** (Vue). Sem marca: pronta para personalizar e vender.
 
@@ -7,6 +7,8 @@ Landing page modelo da **On Track**, feita em **Nuxt 4** (Vue). Sem marca: pront
 ## Como personalizar
 Quase tudo fica no bloco **PERSONALIZAÇÃO** no topo de `app/app.vue` (`const site = {...}`): marca, WhatsApp, links, preços, endereços e dados legais. Os textos e listas (seções, FAQ, depoimentos) ficam logo abaixo, em arrays.
 - **Cores e fontes:** variáveis no topo de `app/assets/css/main.css` e o link do Google Fonts em `nuxt.config.ts`.
+- **Camisa ao vivo:** as cores das versões (Casa, Fora, Goleiro) ficam no array `versoes`. O desenho é de demonstração; troque pela foto real da camisa quando tiver.
+- **Fotos de ambientação:** ficam em `public/fotos/` (estádio, bola, rede, gramado), com créditos no rodapé. Ao trocar por fotos próprias, apague a linha de créditos.
 - **Imagens:** os blocos marcados como "Foto…" são espaços reservados; troque por `<img>` com as fotos do cliente.
 - **Título e descrição do Google:** `nuxt.config.ts` → `app.head`.
 - **Depoimentos e avaliações:** os textos são de exemplo; substitua por avaliações reais e autorizadas antes de publicar.
