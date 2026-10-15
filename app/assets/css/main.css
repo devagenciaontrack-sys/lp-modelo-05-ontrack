@@ -179,3 +179,24 @@ h1 span{ color:var(--laranja); }
   @keyframes flutua{ 50%{ translate:0 -10px; } }
 }
 @media (prefers-reduced-motion:reduce){ html{ scroll-behavior:auto; } *{ transition:none !important; animation:none !important; } }
+
+/* dúvidas em forma de placar */
+.duvidas{ background:var(--bg-2); }
+.placar{ display:grid; gap:20px; } @media (min-width:900px){ .placar{ grid-template-columns:.9fr 1.1fr; gap:24px; align-items:stretch; } }
+.placar-lista{ display:grid; gap:8px; align-content:start; }
+.placar-lista button{ display:flex; align-items:center; gap:14px; padding:14px 18px; border:0; border-radius:14px; background:var(--card); font-weight:700; font-size:15.5px; color:var(--texto); text-align:left; cursor:pointer; transition:background-color .2s, color .2s, transform .2s var(--ease); }
+.placar-lista button:hover{ color:#fff; transform:translateX(4px); }
+.placar-lista button.on{ background:var(--laranja); color:#fff; }
+.placar-n{ display:grid; place-items:center; width:34px; height:34px; flex:none; border-radius:10px; background:rgba(255,255,255,.08); font-weight:900; font-size:16px; color:#fff; font-variant-numeric:tabular-nums; }
+.placar-lista button.on .placar-n{ background:rgba(0,0,0,.2); }
+.placar-painel{ position:relative; display:grid; grid-template-columns:150px 1fr; gap:28px; align-items:center; padding:36px; border-radius:22px; background:var(--card); overflow:hidden; }
+.placar-pin{ width:130%; left:-40%; bottom:-30%; opacity:.18; }
+.placar-camisa{ position:relative; z-index:1; transform:rotate(-6deg); }
+.placar-txt{ position:relative; z-index:1; }
+.placar-txt h3{ font-size:clamp(22px, 2.2vw, 28px); font-weight:800; line-height:1.15; color:#fff; letter-spacing:-.02em; }
+.placar-txt p{ margin-top:12px; font-size:17px; max-width:44ch; }
+.placar-painel .link-seta{ position:relative; z-index:1; grid-column:2; }
+.placar-enter-active, .placar-leave-active{ transition:opacity .25s, transform .25s var(--ease); } .placar-enter-from{ opacity:0; transform:translateY(10px); } .placar-leave-to{ opacity:0; transform:translateY(-6px); }
+@media (max-width:640px){ .placar-painel{ grid-template-columns:1fr; padding:26px 22px; gap:16px; } .placar-camisa{ width:110px; } .placar-painel .link-seta{ grid-column:auto; } }
+.duvidas{ padding-block:96px; }
+.placar-pin{ width:95%; left:auto; right:-28%; bottom:-38%; opacity:.13; }

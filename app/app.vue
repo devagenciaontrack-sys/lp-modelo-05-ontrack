@@ -34,7 +34,9 @@ const faq = [
   { q: 'Quanto tempo demora?', a: 'Depois que você aprova o desenho, produzimos em até 15 dias úteis. O frete aparece no orçamento, de acordo com o CEP.' },
   { q: 'Posso colocar o escudo do meu time?', a: 'Pode. Mande o escudo em boa resolução e a gente aplica em sublimação ou bordado.' },
   { q: 'Como escolho os tamanhos?', a: 'Mandamos a tabela de medidas e, se precisar, um kit de prova de tamanhos para o time.' },
+  { q: 'O nome e o número descascam?', a: 'Não. Usamos sublimação, que tinge o próprio tecido, e silk de alta densidade nos números. Aguenta lavagem na máquina.' },
 ]
+const pergunta = ref(0)
 
 // ============ MONTE A SUA (ao vivo) ============
 const m = ref(0)
@@ -222,12 +224,22 @@ onMounted(() => {
         <p class="wrap aviso">Números e avaliações de exemplo: substitua pelos dados reais e autorizados.</p>
       </section>
 
-      <!-- dúvidas -->
-      <section class="duvidas claro">
-        <div class="wrap duv-grid">
-          <h2 data-sobe>Dúvidas frequentes</h2>
-          <div class="duv-lista" data-sobe>
-            <details v-for="(f, i) in faq" :key="f.q" :open="i === 0"><summary>{{ f.q }}</summary><p>{{ f.a }}</p></details>
+      <!-- dúvidas: placar -->
+      <section id="duvidas" class="duvidas">
+        <div class="wrap">
+          <div class="sec-head"><div><p class="sobretitulo">Dúvidas</p><h2>Antes de entrar em campo</h2></div></div>
+          <div class="placar">
+            <div class="placar-lista" role="tablist" aria-label="Perguntas">
+              <button v-for="(f, i) in faq" :key="f.q" type="button" role="tab" :aria-selected="pergunta === i" :class="{ on: pergunta === i }" @click="pergunta = i"><span class="placar-n" aria-hidden="true">{{ i + 1 }}</span>{{ f.q }}</button>
+            </div>
+            <div class="placar-painel" role="tabpanel" aria-live="polite">
+              <Pincelada class="pin placar-pin" cor="#FF6A13" :forma="2" />
+              <div class="placar-camisa"><Camisa lado="costas" base="#14161C" detalhe="#FF6A13" texto="#FFFFFF" padrao="liso" nome="DÚVIDA" :numero="String(pergunta + 1)" /></div>
+              <Transition name="placar" mode="out-in">
+                <div :key="pergunta" class="placar-txt"><h3>{{ faq[pergunta].q }}</h3><p>{{ faq[pergunta].a }}</p></div>
+              </Transition>
+              <a class="link-seta" :href="wa('Olá! Tenho uma dúvida sobre as camisas.')" target="_blank" rel="noopener">Outra dúvida? Chame no WhatsApp <svg><use href="#i-seta" /></svg></a>
+            </div>
           </div>
         </div>
       </section>
